@@ -21,7 +21,7 @@ PKG_NODE_VERSION:=0.10.28
 
 include $(INCLUDE_DIR)/package.mk
 
-define Package/node-noble
+define Package/node-mdns
   DEPENDS:=+node
   SUBMENU:=Node.js
   SECTION:=lang
@@ -63,5 +63,5 @@ define Package/node-mdns/install
 	rm -rf $(1)/usr/lib/node_modules/$(PKG_NPM_NAME)/node_modules/ws
 endef
 
-$(eval $(call BuildPackage,node-noble))
+$(eval $(call BuildPackage,node-mdns))
 
