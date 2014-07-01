@@ -54,6 +54,15 @@ define Build/Compile
 	npm_config_arch=mips \
 	npm_config_nodedir=$(BUILD_DIR)/node-v$(PKG_NODE_VERSION)/ \
 	PREFIX="$(PKG_INSTALL_DIR)/usr/" \
+
+# I added these lines to fix an error but I have a feeling that it is the wrong
+# way to fix the error I was seeing and that it is just installing in the wrong place
+    mkdir -p $(PKG_INSTALL_DIR)
+    mkdir -p $(PKG_INSTALL_DIR)/usr
+    mkdir -p $(PKG_INSTALL_DIR)/usr/bin/
+
+# this dependency is used my node-mdns
+    ln -fs libdns_sd.so.1 $(PKG_INSTALL_DIR)/libdns_sd.so
 	npm install -g $(PKG_BUILD_DIR)
 endef
 
