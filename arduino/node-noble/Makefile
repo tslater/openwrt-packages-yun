@@ -22,12 +22,12 @@ PKG_NODE_VERSION:=0.10.28
 include $(INCLUDE_DIR)/package.mk
 
 define Package/node-noble
-  DEPENDS:=+node +node-ws +bluez-libs
-  SUBMENU:=Node.js
-  SECTION:=lang
-  CATEGORY:=Languages
-  TITLE:=A node.js BLE (Bluetooth low energy) central library.
-  URL:=https://www.npmjs.org/package/noble
+	DEPENDS:=+node +node-ws +bluez-libs
+	SUBMENU:=Node.js
+	SECTION:=lang
+	CATEGORY:=Languages
+	TITLE:=A node.js BLE (Bluetooth low energy) central library.
+	URL:=https://www.npmjs.org/package/noble
 endef
 
 define Package/node-noble/description
@@ -48,8 +48,8 @@ define Build/Compile
 	LD="$(TOOLCHAIN_DIR)/bin/mips-openwrt-linux-g++" \
 	PATH="/usr/bin/:$(PATH)" \
 	GYPFLAGS="-Dv8_use_mips_abi_hardfloat=false -Dv8_can_use_fpu_instructions=false" \
-        CFLAGS="$(TARGET_CFLAGS) $(EXTRA_CFLAGS) $(TARGET_CPPFLAGS) $(EXTRA_CPPFLAGS)" \
-        CXXFLAGS="$(TARGET_CXXFLAGS) $(EXTRA_CXXFLAGS) $(TARGET_CPPFLAGS) $(EXTRA_CPPFLAGS)" \
+	CFLAGS="$(TARGET_CFLAGS) $(EXTRA_CFLAGS) $(TARGET_CPPFLAGS) $(EXTRA_CPPFLAGS)" \
+	 CXXFLAGS="$(TARGET_CXXFLAGS) $(EXTRA_CXXFLAGS) $(TARGET_CPPFLAGS) $(EXTRA_CPPFLAGS)" \
 	LDFLAGS="-L$(TOOLCHAIN_DIR)/lib/ -Wl,-rpath-link $(TOOLCHAIN_DIR)/lib/" \
 	npm_config_arch=mips \
 	npm_config_nodedir=$(BUILD_DIR)/node-v$(PKG_NODE_VERSION)/ \
